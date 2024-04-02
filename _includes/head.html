@@ -28,4 +28,9 @@
 
     <!-- RSS -->
     <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+    <!-- Google Analytics -->
+    {% if site.google_analytics %}
+    {% include analytics.html %}
+    {% endif %}
 </head>

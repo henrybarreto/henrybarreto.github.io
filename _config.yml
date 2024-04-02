@@ -31,3 +31,6 @@ markdown_ext        : "markdown,mkdown,mkdn,mkd,md"
 strict_front_matter : false
 
 # Custom vars
+
+## Google Analytics
+google_analytics: G-LYPXDBSB22
