@@ -1,6 +1,7 @@
 ---
 layout: post
-title: O que é dyn em Rust
+title: O que é dyn em Rust?
+tags: portuguese, rust, newbie, tutorial
 ---
 
 Uma dos maiores diferenciais da linguagem Rust é sua proposta para gerenciamento
