@@ -9,4 +9,8 @@ title: What's Jekyll?
 
 It's an immensely useful tool and one we encourage you to use here with Hyde.
 
+<code>
+    var test = 10
+</code>
+
 Find out more by [visiting the project on GitHub](https://github.com/mojombo/jekyll).

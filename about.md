@@ -3,28 +3,19 @@ layout: page
 title: About
 ---
 
-<p class="message">
-  Hey there! This page is included as an example. Feel free to customize it for your own use upon downloading. Carry on!
-</p>
+I am a Software Developer with a passion for programming and a lot of admiration
+for human languages.
 
-In the novel, *The Strange Case of Dr. Jeykll and Mr. Hyde*, Mr. Poole is Dr. Jekyll's virtuous and loyal butler. Similarly, Poole is an upstanding and effective butler that helps you build Jekyll themes. It's made by [@mdo](https://twitter.com/mdo).
+In my free time, I am actively working to strengthen my skills in Rust, Go, C
+and related technologies
 
-There are currently two themes built on Poole:
+At this blog, I document my learning experiences, share my progress, thoughts,
+options and knowledge in the hope that it will help others on their journey.
 
-* [Hyde](http://hyde.getpoole.com)
-* [Lanyon](http://lanyon.getpoole.com)
+Welcome!
 
-Learn more and contribute on [GitHub](https://github.com/poole).
+### Find me here
 
-## Setup
-
-Some fun facts about the setup of this project include:
-
-* Built for [Jekyll](http://jekyllrb.com)
-* Developed on GitHub and hosted for free on [GitHub Pages](https://pages.github.com)
-* Coded with [Sublime Text 2](http://sublimetext.com), an amazing code editor
-* Designed and developed while listening to music like [Blood Bros Trilogy](https://soundcloud.com/maddecent/sets/blood-bros-series)
-
-Have questions or suggestions? Feel free to [open an issue on GitHub](https://github.com/poole/issues/new) or [ask me on Twitter](https://twitter.com/mdo).
-
-Thanks for reading!
+- [GitHub](https://github.com/henrybarreto)
+- [Mastodon](https://mastodon.online/@henrybarreto)
+- [LinkedIn](https://www.linkedin.com/in/henry-barreto)
