@@ -1,10 +1,17 @@
 DIR=$(PWD)
+PORT=4000
 
-build:
+check:
+	@if ! docker info > /dev/null 2>&1; then \
+		echo "Docker is not running."; \
+		echo "Starting it"; \
+		systemctl start docker; \
+	fi
+build: check
 	docker build -t jekyll .
-dev:
+dev: check
 	docker run \
 		--rm -it \
 		-v "$(DIR):/srv/jekyll:Z" \
-		-p 4000:4000 \
-		jekyll jekyll serve --livereload -s /srv/jekyll --host 0.0.0.0 --port 4000
+		-p $(PORT):$(PORT) \
+		jekyll jekyll serve --livereload -s /srv/jekyll --host 0.0.0.0 --port $(PORT)
