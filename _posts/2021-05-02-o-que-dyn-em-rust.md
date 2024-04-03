@@ -13,7 +13,7 @@ memória, um dos mais presentes em sistemas de informação, segundo a
 *[Microsoft](https://msrc-blog.microsoft.com/2019/07/18/we-need-a-safer-systems-programming-language/)*,
 e com alto potencial destrutivo.
 
-## *Ownership* e *Borrowing*
+## Ownership e Borrowing
 
 O Rust alcança esse nível de segurança em relação a memória através de duas
 técnicas relativamente simples: `Ownership` e `Borrowing`.
@@ -84,16 +84,21 @@ O uso prática dessa palavra reservada é até simples: o **`dyn`** é utilizado
 para indicar que o tipo de uma certa estrutura precisa ser implementação de um
 certo `Trait` de maneira dinâmica, em tempo de execução.
 
-``` trait Service { fn do(&self); fn get(&self) { //... } }
+```rust
+
+trait Service { fn do(&self); fn get(&self) {  } }
 
 struct ServiceA { //... }
 
-impl Service for ServiceA { fn do(&self) { //... } }
+impl Service for ServiceA { fn do(&self) {  } }
 
-fn main() { // Em versões anteriores do Rust, não era necessário o uso do 'dyn'.
-// O que esse 'statemente' diz, basicamente, é: // A definição 'sevice' precisa
-ser de um tipo que implementa o Trait // Service. let service: Box<dyn Service>
-= Box::new(ServiceA::new()); //... }
+fn main() { 
+    // Em versões anteriores do Rust, não era necessário o uso do 'dyn'.
+    // O que esse 'statemente' diz, basicamente, é: 
+    // A definição 'sevice' precisa ser de um tipo que implementa o Trait Service.
+
+    let service: Box<dyn Service> = Box::new(ServiceA::new());
+}
 
 ```
 
