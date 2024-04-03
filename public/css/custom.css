@@ -3,7 +3,7 @@
 }
 
 body {
-    font-size: 24px
+    font-size: 20px !important
 }
 
 iframe {
@@ -19,4 +19,22 @@ pre code {
   max-width: 100%;
   min-width: 100px;
   padding: 0;
+}
+
+img {
+    width: 100%
+}
+
+.post-tags {
+    display: inline-block;
+    list-style-type: none; /* Remove default bullet points */
+    padding: 0; /* Remove default padding */
+    margin: 10px 0; /* Remove default margin */
+}
+
+.post-tag {
+    display: inline; /* Display list items inline */
+    margin-right: 10px; /* Add some spacing between list items */
+    color: #9a9a9a;
+    font-size: 0.8em;
 }
