@@ -9,7 +9,7 @@ check:
 	fi
 build: check
 	docker build -t jekyll .
-dev: check
+dev: check build
 	docker run \
 		--rm -it \
 		-v "$(DIR):/srv/jekyll:Z" \
