@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Documenting your API with OpenAPI standard
+title: Documenting HTTP APIs with OpenAPI standard
 ---
 
 ## What is OpenAPI?
