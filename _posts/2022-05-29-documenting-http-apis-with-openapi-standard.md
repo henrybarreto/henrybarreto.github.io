@@ -1,6 +1,12 @@
 ---
 layout: post
 title: Documenting HTTP APIs with OpenAPI standard
+description: 
+    Learn about OpenAPI, the industry standard for describing APIs, its benefits, best practices, and essential tools like
+    Redocly CLI, Prism CLI, and OpenAPI Generator. Discover how to streamline API development, validation, documentation,
+    and testing with OpenAPI. Get insights into Swagger tools and how they complement the OpenAPI ecosystem. Start
+    optimizing your API workflow today!
+keywords: openapi, api, rest, specification, documentation, tools, redocly, prism, swagger, codegen
 ---
 
 ## What is OpenAPI?

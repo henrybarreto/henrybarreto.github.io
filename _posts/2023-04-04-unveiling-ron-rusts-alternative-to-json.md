@@ -1,6 +1,11 @@
 ---
 layout: post
 title: Unveiling RON, Rust's alternative to JSON
+description:
+    Discover the limitations of JSON in Rust and how RON (Rust Object Notation) overcomes them. Learn about RON's seamless
+    support for Rust data types, enhanced readability with features like trailing commas and comments, and differentiation
+    between data structures. Explore examples and resources to leverage RON effectively in your Rust projects.
+keywords: rust, json, ron, serialization, data interchange, rust ecosystem
 ---
 
 The majority of developers know about JSON, JavaScript Object Notation, and its

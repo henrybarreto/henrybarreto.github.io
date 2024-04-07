@@ -1,6 +1,9 @@
 ---
 layout: page
 title: About
+description: 
+    I am a software developer specializing in Back-end development, with a keen interest in networking programming and
+    ensuring seamless interoperability within programming languages.
 ---
 
 I am a software developer specializing in Back-end development, with a keen

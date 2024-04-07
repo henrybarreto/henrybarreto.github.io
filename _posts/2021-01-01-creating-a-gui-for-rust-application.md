@@ -1,6 +1,12 @@
 ---
 layout: post
 title: Creating a GUI for a Rust application
+description:
+    Learn how to create a Graphical User Interface (GUI) for your Rust application using GTK and Glade. Follow a
+    step-by-step guide to build a simple desktop application named 'Name This Color', allowing users to select a color and
+    assign it a name. Explore Rust code snippets, understand memory management concepts like Rc and RefCell, and discover
+    project structure tips. Make your Rust application user-friendly with this comprehensive tutorial.
+keywords: rust, gui, gtk, glade, tutorial
 ---
 
 I suppose the majority of beginner programmers aspire to create something
