@@ -19,7 +19,11 @@
     {% endif %}
 
     <meta name="author" content="Henry Barreto <me@henrybarreto.dev>">
+    {% if page.robots %}
+    <meta name="robots" content="{{ page.robots }}">
+    {% else %}
     <meta name="robots" content="index, follow">
+    {% endif %}
 
     <!-- Enable responsiveness on mobile devices-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
