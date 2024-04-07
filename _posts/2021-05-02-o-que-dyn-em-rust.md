@@ -2,9 +2,9 @@
 layout: post
 title: O que é dyn em Rust?
 description: 
-    Entenda o que é 'dyn' em Rust e como ele revoluciona o gerenciamento de memória. Saiba como 'Ownership' e 'Borrowing'
+    Entenda o que é dyn em Rust e como ele revoluciona o gerenciamento de memória. Saiba como Ownership e Borrowing
     garantem segurança e eficiência, além de explorar conceitos como Stack e Heap. Descubra o papel das Traits e o uso
-    prático do 'dyn' para implementações dinâmicas de Traits em tempo de execução. Uma introdução completa para novatos com
+    prático do dyn para implementações dinâmicas de Traits em tempo de execução. Uma introdução completa para novatos com
     exemplos práticos e referências úteis.
 keywords: portuguese, rust, newbie, tutorial, dyn, memroia, estatico, dinamico
 ---
