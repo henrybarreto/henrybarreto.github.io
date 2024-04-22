@@ -93,7 +93,7 @@ goal.
 > Note that we could use `sync.WaitGroup` to wait until all Go routines returned
 > before continuing or returning a response to the user.
 
-```Golang
+```golang
 package main
 
 import (
