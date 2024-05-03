@@ -10,7 +10,7 @@ plugins: [jekyll-watch, jekyll-paginate, webrick]
 
 # Setup
 title:            Henry Barreto's Blog
-description:      "I am a software developer specializing in Back-end development, with a keen interest in networking programming."
+description:      "Software developer, networking programming enthusiast, language explore, interoperability leaner, and Linux user."
 url:              https://henrybarreto.dev
 baseurl:          /
 
