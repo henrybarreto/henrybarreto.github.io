@@ -77,6 +77,7 @@ echo $$
 ```
 
 *Sends the interface veth1 to the namespace.*
+> This command should be run in the Host environment.
 
 ```sh
 sudo ip link set veth1 netns <PID> 
@@ -88,13 +89,13 @@ sudo ip link set veth1 netns <PID>
 sudo ip addr add 10.0.0.2/24 dev veth1
 ```
 
-*And started the network interface.*
+*Start the network interface...*
 
 ``` sh
 sudo ip link set veth1 up
 ```
 
-*Configure the default route to the host machine...*
+*And configure the default route to the host machine.*
 
 ```sh
 ip route add default via 10.0.0.1
@@ -105,5 +106,5 @@ used to set *UWF* rules, for example, to block the desirable traffic,
 essentially blocking only the application/applications that runs inside this
 bash instance.
 
-It is simple, but, in general, works! Thank you for reading, hope it helped a
-bit.
+It's a straightforward approach, but it works! Thanks for reading, and I hope
+this helps.
