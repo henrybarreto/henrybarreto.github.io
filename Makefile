@@ -14,4 +14,4 @@ dev: check build
 		--rm -it \
 		-v "$(DIR):/srv/jekyll:Z" \
 		-p $(PORT):$(PORT) \
-		jekyll jekyll serve --livereload -s /srv/jekyll --host 0.0.0.0 --port $(PORT)
+		jekyll jekyll serve --drafts --livereload -s /srv/jekyll --host 0.0.0.0 --port $(PORT)
