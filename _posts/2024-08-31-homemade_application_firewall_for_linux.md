@@ -57,6 +57,12 @@ sudo ip addr add 10.0.0.1/24 dev veth0
 sudo ip link set veth0 up
 ```
 
+*Enable IP forwarding.*
+
+```sh
+sudo sysctl -w net.ipv4.ip_forward=1
+```
+
 With the interface started, we need to create the namespace, isolating the
 network stack, what can be done using the *unshare* command.
 
@@ -82,16 +88,16 @@ sudo ip link set veth1 netns <PID>
 sudo ip addr add 10.0.0.2/24 dev veth1
 ```
 
-*Configure the default route to the host machine...*
-
-```sh
-ip route add default via 10.0.0.1
-```
-
 *And started the network interface.*
 
 ``` sh
 sudo ip link set veth1 up
+```
+
+*Configure the default route to the host machine...*
+
+```sh
+ip route add default via 10.0.0.1
 ```
 
 After this configuration process, the *bash* initialized with *unshare* could be
