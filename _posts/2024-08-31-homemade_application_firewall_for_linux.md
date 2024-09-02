@@ -2,11 +2,11 @@
 layout: post
 title: Homemade application firewall for Linux 
 description:
-    Use Linux namespaces and tools like UFW or IP Tables to create an isolated
-    network environment for specific applications. This method allows precise
-    control over application traffic, offering a straightforward solution for
-    managing network access on Linux.
-keywords: linux, application, firewall, ip, namespaces, simple
+    Utilize Linux namespaces alongside tools like UFW or IP Tables to create an
+    isolated network environment tailored for specific applications. This approach
+    allows for precise control over application traffic, offering a simple and easy
+    solution for managing network access and implementing firewall rules on Linux.
+keywords: linux, application, firewall, ip, namespaces, simple, easy
 ---
 
 Firewalls on Linux normally work on network interfaces, managing and controlling
