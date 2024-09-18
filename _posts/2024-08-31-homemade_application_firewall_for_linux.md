@@ -101,6 +101,13 @@ sudo ip link set veth1 up
 ip route add default via 10.0.0.1
 ```
 
+To complete the setup, on the host environment too, one extra step is necessary:
+allow IP routing to the external interface.
+
+```sh
+sudo iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -o <INTERFACE> -j MASQUERADE
+```
+
 After this configuration process, the *bash* initialized with *unshare* could be
 used to set *UWF* rules, for example, to block the desirable traffic,
 essentially blocking only the application/applications that runs inside this
