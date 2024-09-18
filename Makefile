@@ -12,6 +12,6 @@ build: check
 dev: check build
 	docker run \
 		--rm -it \
+		--network host \
 		-v "$(DIR):/srv/jekyll:Z" \
-		-p $(PORT):$(PORT) \
-		jekyll jekyll serve --drafts --livereload -s /srv/jekyll --host 0.0.0.0 --port $(PORT)
+		jekyll jekyll serve --drafts --livereload -s /srv/jekyll --host localhost --port $(PORT)
