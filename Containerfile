@@ -1,4 +1,4 @@
-FROM alpine
+FROM docker.io/alpine
 
 RUN apk add jekyll
 
