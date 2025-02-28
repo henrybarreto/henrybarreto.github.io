@@ -9,109 +9,117 @@ description:
 keywords: linux, application, firewall, ip, namespaces, simple, easy
 ---
 
-Firewalls on Linux normally work on network interfaces, managing and controlling
-the networking traffic basing on defined rules. If you want to block any request
-of goes on the port 80, for example, a simple configuration could be done. No
-*UDP* allowed; no problem at all. However, how to block traffic for only one
-application? The Application Firewall shows up.
+### Application-Specific Firewall on Linux Using Namespaces
 
-In a simple summarize, An Application Firewall blocks or limits the application
-to receiving or sending traffic to/from a destination. It can have plenty of
-utilities, since Servers' applications to Desktops' one, what I was looking for.
+Firewalls on Linux typically operate at the network interface level, managing
+and controlling network traffic based on predefined rules. For example, blocking
+all requests on port 80 is a straightforward configuration. However, what if you
+need to block traffic for a single application rather than an entire network
+interface? This is where an **Application Firewall** comes into play.
 
-I was working on an old game; trying to understand its Network protocol, and how
-the binary behavior when something on the connections goes wrong, and something
-comes to my mind: "What if I could block the traffic to this server only for
-this process?" what brings me to
-[*OpenSnitch*](https://github.com/evilsocket/opensnitch).
+### What is an Application Firewall?
 
-OpenSnitch (n.d.). *OpenSnitch allows you to create rules for which apps to
-allow to access the internet and which to block.* Retrieved from
-[It's Foss](https://itsfoss.com/opensnitch-firewall-linux/). Nothing bad to say
-about it, but I thought it would be too much for my use case, so I have
-continued questing.
+An **Application Firewall** allows you to block or restrict specific
+applications from sending or receiving network traffic. This can be useful in
+various scenarios, from securing server applications to controlling desktop
+software.
 
-Some days after, a light came to my mind: "Should Linux namespaces fit for it?"
-I have read about it, but never applied directly, so my theory was: Could I
-create a namespace for the application, use *UFW* or *IP Tables* to build my
-rules, and have a simpler version of the Application Firewall? The answer is
-*Yes*!
+I recently needed such a solution while working on an old game,
+analyzing its network protocol and how it behaves under different connection
+conditions. A question came to mind:
 
-The steps to make this test were:
+> *"What if I could block traffic to this server for just this process?"*
 
-*On the host machine, I created a P2P interfaces...*
+This led me to discover
+[**OpenSnitch**](https://github.com/evilsocket/opensnitch), a Linux application
+firewall that allows per-application network rules. While OpenSnitch is great, I
+found it too complex for my specific needs. So, I continued my search for a more
+lightweight approach.
 
+### Using Linux Namespaces for Application-Specific Firewalling
+
+A few days later, I had an idea: *Could Linux namespaces help achieve this?*
+Since Linux namespaces allow process isolation, I theorized that by creating a
+dedicated network namespace and applying **UFW** or **iptables** rules within
+it, I could effectively build a minimalistic Application Firewall. The answer?
+*Yes!*
+
+#### Steps to Set Up an Application-Specific Firewall Using Network Namespaces
+
+Here’s how I set up a simple firewall for an application using network namespaces:
+
+1. **Create a virtual Ethernet pair (veth interfaces) on the host machine:**
 ```sh
 sudo ip link add veth0 type veth peer name veth1
 ```
 
-*Have configured the IP address...*
-
+2. **Assign an IP address to one end of the veth pair (host side):**
 ```sh
 sudo ip addr add 10.0.0.1/24 dev veth0
 ```
 
-*And started the network interface.*
-
+3. **Bring up the host-side interface:**
 ```sh
 sudo ip link set veth0 up
 ```
 
-*Enable IP forwarding.*
-
+4. **Enable IP forwarding on the host:**
 ```sh
 sudo sysctl -w net.ipv4.ip_forward=1
 ```
 
-With the interface started, we need to create the namespace, isolating the
-network stack, what can be done using the *unshare* command.
-
+5. **Create a new network namespace and enter it:**
 ```sh
 sudo unshare --net /bin/bash
 ```
 
-*Shows the namespace's PID.*
-
+6. **Retrieve the namespace’s process ID (PID):**
 ```sh
 echo $$
 ```
 
-*Sends the interface veth1 to the namespace.*
-> This command should be run in the Host environment.
-
+7. **Move the second veth interface (veth1) into the new namespace (run this from the host):**
 ```sh
-sudo ip link set veth1 netns <PID> 
+sudo ip link set veth1 netns <PID>
 ```
 
-*Have configured the IP address...*
-
+8. **Inside the namespace, assign an IP to veth1:**
 ```sh
 sudo ip addr add 10.0.0.2/24 dev veth1
 ```
 
-*Start the network interface...*
-
-``` sh
+9. **Bring up the interface inside the namespace:**
+```sh
 sudo ip link set veth1 up
 ```
 
-*And configure the default route to the host machine.*
-
+10. **Set up a default route to the host machine inside the namespace:**
 ```sh
 ip route add default via 10.0.0.1
 ```
 
-To complete the setup, on the host environment too, one extra step is necessary:
-allow IP routing to the external interface.
-
+11. **On the host, enable NAT for outbound traffic:**
 ```sh
 sudo iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -o <INTERFACE> -j MASQUERADE
 ```
 
-After this configuration process, the *bash* initialized with *unshare* could be
-used to set *UWF* rules, for example, to block the desirable traffic,
-essentially blocking only the application/applications that runs inside this
-bash instance.
+#### Applying Firewall Rules
 
-It's a straightforward approach, but it works! Thanks for reading, and I hope
-this helps.
+Now that the isolated namespace is set up, you can apply firewall rules to
+control traffic for applications running within it. For example, using **UFW**
+inside the namespace’s shell, you could block outgoing traffic to a specific
+address or port:
+
+```sh
+sudo ufw deny out to 192.168.1.100 port 80
+```
+
+### Conclusion
+
+This approach provides a lightweight, flexible way to restrict network access at
+the application level without using full-fledged application firewalls like
+OpenSnitch. By leveraging **Linux namespaces** and **iptables**, you gain
+fine-grained control over networking per process, making it an excellent
+solution for debugging, security, and research.
+
+Thanks for reading, and I hope this helps!
