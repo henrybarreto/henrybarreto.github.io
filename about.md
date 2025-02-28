@@ -24,6 +24,5 @@ and knowledge in the hope that it will help others on their journey.
 ### Social
 
 - [GitHub](https://github.com/henrybarreto)
-- [Mastodon](https://mastodon.online/@henrybarreto)
 - [LinkedIn](https://www.linkedin.com/in/henry-barreto)
 - [E-mail](mailto:me@henrybarreto.dev)
