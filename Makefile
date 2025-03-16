@@ -2,9 +2,9 @@ DIR=$(PWD)
 PORT=4000
 
 build: 
-	podman build -t jekyll .
+	docker build -f Containerfile -t jekyll .
 dev: build
-	podman run \
+	docker run \
 		--rm -it \
 		--network host \
 		-v "$(DIR):/srv/jekyll:Z" \
